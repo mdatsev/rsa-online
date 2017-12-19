@@ -16,9 +16,9 @@ end
 
 class RSA
     def initialize n, e, d
-        @n = n
-        @e = e
-        @d = d
+        @n = n.to_i
+        @e = e.to_i
+        @d = d.to_i
       #initializes this instance of RSA with a n,e and d variables of type int. 'n','e' are the public key and 'd' is the private one. This n,e,d should be used when encrypting and decrypting the message
     end
     
