@@ -22,14 +22,12 @@ class DecryptMessagesController < ApplicationController
 
   # POST rsas/1/decrypt_messages
   def create
-    @decrypt_message = @rsa.decrypt_messages.build(decrypt_message_params)
+    rsa = RSA.new(@rsa.n, @rsa.e, @rsa.d)
+    @decrypt_message = @rsa.decrypt_messages.build({message: rsa.decrypt(params[:message])})
 
-    if @decrypt_message.save
-      redirect_to([@decrypt_message.rsa, @decrypt_message], notice: 'Decrypt message was successfully created.')
-    else
-      render action: 'new'
+    @decrypt_message.save
+    render json: @decrypt_message.id
     end
-  end
 
   # PUT rsas/1/decrypt_messages/1
   def update

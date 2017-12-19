@@ -22,13 +22,10 @@ class EncryptMessagesController < ApplicationController
 
   # POST rsas/1/encrypt_messages
   def create
-    @encrypt_message = @rsa.encrypt_messages.build(encrypt_message_params)
-
-    if @encrypt_message.save
-      redirect_to([@encrypt_message.rsa, @encrypt_message], notice: 'Encrypt message was successfully created.')
-    else
-      render action: 'new'
-    end
+    rsa = RSA.new(@rsa.n, @rsa.e, @rsa.d)
+    @encrypt_message = @rsa.encrypt_messages.build({message: rsa.encrypt(params[:message])})
+    @encrypt_message.save
+    render json: @encrypt_message.id    
   end
 
   # PUT rsas/1/encrypt_messages/1
