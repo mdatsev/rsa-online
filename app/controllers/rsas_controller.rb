@@ -10,6 +10,7 @@ class RsasController < ApplicationController
   # GET /rsas/1
   # GET /rsas/1.json
   def show
+    render json: {n: @rsa.n, e: @rsa.e, d: @rsa.d}
   end
 
   # GET /rsas/new
