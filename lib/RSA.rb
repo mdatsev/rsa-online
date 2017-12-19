@@ -58,10 +58,3 @@ class RSA
       #decrypts the message passed. The message is of type string. Decrypts each symbol of this string Encrypts each symbol of this string by using its ASCII number representationand returns the decrypted message. 
     end
 end
-
-n = RSA.new 1,2,3
-p n.new_key;p n.new_key;p n.new_key;p n.new_key;
-p n.new_key;p n.new_key;p n.new_key;p n.new_key;
-p n.new_key;p n.new_key;p n.new_key;p n.new_key;
-p n.new_key;p n.new_key;p n.new_key;p n.new_key;
-p n.new_key;p n.new_key;p n.new_key;p n.new_key;
