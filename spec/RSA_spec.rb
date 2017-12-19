@@ -6,11 +6,11 @@ RSpec.describe RSA do
         expect(rsa.decrypt(rsa.encrypt("henlo"))).to eq "henlo"
     end
     it "encrypted message should not be the same" do
-        rsa = RSA.new(*RSA.new(1,2,3).new_key)
+        rsa = RSA.new(*RSA.new_key)
         expect(rsa.encrypt("henlo")).not_to eq "henlo"
     end
     it "should preserve the message enctypt->decrypt with generated key" do
-        rsa = RSA.new(*RSA.new(1,2,3).new_key)
+        rsa = RSA.new(*RSA.new_key)
         expect(rsa.decrypt(rsa.encrypt("henlo"))).to eq "henlo"
     end
     it "should return the right n" do

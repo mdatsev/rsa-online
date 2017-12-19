@@ -34,7 +34,7 @@ class RSA
       @d
     end
     
-    def new_key
+    def self.new_key
         p, q = twoprimes
         n = p*q
         ctfn = (p-1).lcm(q-1)
