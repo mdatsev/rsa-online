@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :rsas
   resources :rsas do
     resources :decrypt_messages
   end
