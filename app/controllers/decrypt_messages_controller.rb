@@ -9,6 +9,7 @@ class DecryptMessagesController < ApplicationController
 
   # GET rsas/1/decrypt_messages/1
   def show
+    render json: {message: @decrypt_message.message}
   end
 
   # GET rsas/1/decrypt_messages/new

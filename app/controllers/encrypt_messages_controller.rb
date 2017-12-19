@@ -9,6 +9,7 @@ class EncryptMessagesController < ApplicationController
 
   # GET rsas/1/encrypt_messages/1
   def show
+    render json: {message: @encrypt_message.message}
   end
 
   # GET rsas/1/encrypt_messages/new
@@ -25,7 +26,7 @@ class EncryptMessagesController < ApplicationController
     rsa = RSA.new(@rsa.n, @rsa.e, @rsa.d)
     @encrypt_message = @rsa.encrypt_messages.build({message: rsa.encrypt(params[:message])})
     @encrypt_message.save
-    render json: @encrypt_message.id    
+    render json: @encrypt_message.id
   end
 
   # PUT rsas/1/encrypt_messages/1
