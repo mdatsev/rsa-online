@@ -24,17 +24,15 @@ class RsasController < ApplicationController
   # POST /rsas
   # POST /rsas.json
   def create
-    @rsa = Rsa.new(rsa_params)
-
-    respond_to do |format|
-      if @rsa.save
-        format.html { redirect_to @rsa, notice: 'Rsa was successfully created.' }
-        format.json { render :show, status: :created, location: @rsa }
-      else
-        format.html { render :new }
-        format.json { render json: @rsa.errors, status: :unprocessable_entity }
-      end
+    #@rsa = Rsa.new(rsa_params)
+    n = params[:n]
+    e = params[:e]
+    d = params[:d]
+    if(n.blank? || e.blank? || d.blank?)
+      n, e, d = RSA.new_key
     end
+    @rsa = Rsa.create({n: n, e: e, d: d})
+    render json: @rsa.id
   end
 
   # PATCH/PUT /rsas/1
